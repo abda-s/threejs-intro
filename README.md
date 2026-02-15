@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# Three.js R3F Animation Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to load a 3D character model (`Hussainberg.glb`), display it in a React Three Fiber scene, and control its animations using a custom React Context and a Tailwind CSS interface.
 
-Currently, two official plugins are available:
+## 🚀 Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[View Live Demo](https://abda-s.github.io/threejs-intro/)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **3D Scene**: Built with `three.js` and `@react-three/fiber`.
+- **Model Loading**: Uses `useGLTF` from `@react-three/drei` to load optimized GLB models.
+- **Animation System**: Custom `CharacterAnimationsContext` to manage animation states (play, crossfade, loop).
+- **Responsive UI**: Tailwind CSS interface for switching animations, optimized for both desktop and mobile.
+- **Shadows**: Soft shadows using `DirectionalLight` and `shadow-mapSize` configuration.
+- **Production Ready**: Configured for GitHub Pages deployment with correct base path handling.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** (v18+)
+- **TypeScript**
+- **Vite**
+- **Three.js**
+- **React Three Fiber (R3F)**
+- **Drei** (Helper library for R3F)
+- **Tailwind CSS**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/abda-s/threejs-intro.git
+    cd threejs-intro
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+## 🏗️ Build & Deploy
+
+To build for production:
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys the `dist` folder to GitHub Pages on push to the `main` branch.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Project Structure
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `src/components/Experience.tsx`: The main 3D scene setup (lights, floor, camera controls).
+- `src/components/Hussainberg.tsx`: The character model component with animation logic.
+- `src/components/Interface.tsx`: The UI overlay for animation controls.
+- `src/contexts/CharacterAnimationsContext.tsx`: Context for managing animation state.
+- `public/models/`: Contains the 3D model files.
+
+## 📝 Credits
+
+Based on the [React Three Fiber Animation Tutorial](https://github.com/wass08/threejs-r3f-tutorial-animations) by Wawa Sensei.
+Adapted to TypeScript and Tailwind CSS by Abdas.
