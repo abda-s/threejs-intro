@@ -35,7 +35,7 @@ type GLTFResult = GLTF & {
 
 export function Hussainberg(props: React.JSX.IntrinsicElements['group']) {
   const group = React.useRef<THREE.Group>(null)
-  const { scene, animations } = useGLTF('/models/Hussainberg-transformed.glb')
+  const { scene, animations } = useGLTF(import.meta.env.BASE_URL + 'models/Hussainberg-transformed.glb')
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone) as unknown as GLTFResult
   const { actions, names } = useAnimations(animations, group)
@@ -115,4 +115,4 @@ export function Hussainberg(props: React.JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/models/Hussainberg-transformed.glb')
+useGLTF.preload(import.meta.env.BASE_URL + 'models/Hussainberg-transformed.glb')
